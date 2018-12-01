@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibraryService
 {
-    public class LibraryAssetService : IService
+    public class LibraryAssetService : LibraryData.IService
     {
         private LibraryContext _context;
 

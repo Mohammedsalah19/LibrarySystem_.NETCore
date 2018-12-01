@@ -1,0 +1,44 @@
+﻿@model LibrarySystem.Models.Catalog.AssetindexModel
+
+ 
+<div class="" id="assets">
+
+    <h2>Library Catalog</h2>
+
+    <div id="assetsTable">
+
+        <table class="table-condensed" id="CatalogIndexTable"> 
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Dewey Call Number</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var assets in Model.Assets)
+                {
+                <tr class="assetRow">
+                    <td class="">
+                        <a asp-controller="Catalog" asp-action="Detali" asp-route-id="@assets.id">
+
+                            <img src="@assets.Imgurl" class="imgCell" />
+                        </a>
+                    </td>
+                    <td class="">@assets.Title</td>
+                    <td class="">@assets.AuthorOrDirector</td>
+                    <td class="">@assets.DeweyCallNumber</td>
+
+
+                </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

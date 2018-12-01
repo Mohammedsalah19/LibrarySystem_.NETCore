@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LibraryService
+namespace LibraryData
 {
    public interface IService
     {
