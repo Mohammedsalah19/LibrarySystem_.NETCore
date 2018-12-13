@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using IService = LibraryData.IService;
 
+
 namespace Library
 {
     public class Startup
@@ -37,7 +38,10 @@ namespace Library
 
             services.AddSingleton(Configuration);
             services.AddScoped<IService,LibraryAssetService>();
+            services.AddScoped<ICheckOut, CheckOutServices>();
+            services.AddScoped<IPatron, PatronService>();
 
+            //connect to database
             services.AddDbContext<LibraryContext>(options => options.UseSqlServer(Configuration["Data:libraryConnection:ConnectionString"]));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -58,6 +62,7 @@ namespace Library
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseDefaultFiles();
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>

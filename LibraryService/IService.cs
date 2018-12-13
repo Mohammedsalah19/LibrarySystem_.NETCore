@@ -17,8 +17,5 @@ namespace LibraryService
         string GetIsbn(int id);
         LibraryBranch GetCurrentLocation(int id);
 
-
-
-
     }
 }

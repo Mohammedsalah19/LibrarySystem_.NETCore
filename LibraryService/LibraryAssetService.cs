@@ -59,7 +59,12 @@ namespace LibraryService
 
         public string GetDeweyIndex(int id)
         {
-            return _context.Books.FirstOrDefault(dewey=> dewey.Id == id).DeweyIndex;
+            var Book = _context.Books.FirstOrDefault(dewey => dewey.Id == id);
+            if (Book is null)
+            {
+                return null;
+            }
+            return Book.DeweyIndex;
         }
 
         public string GetIsbn(int id)

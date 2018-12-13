@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Library</title>
+    <title>@ViewData["Title"]Library A-Z</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -17,7 +17,39 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+
+
+
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        
+        <header class="custom-header mdl-layout__header mdl-layout__header--waterfall">
+            <div class="mdl-layout__header-row">
+
+                <span class="mdl-layout-title glyphicon-log-out"><a href="/">Library A-Z</a> </span>
+                <div class="mdl-layout-spacer">
+                    <nav class="mdl-navigation mdl-layout--large-screen-only">
+
+
+                    </nav>
+
+                </div>
+
+
+            </div>
+
+        </header>
+
+
+    </div>
+
+
+
+
+
+
+
+     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -43,7 +75,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+        <footer style="text-align:center">
             <p>&copy; 2018 - Library</p>
         </footer>
     </div>

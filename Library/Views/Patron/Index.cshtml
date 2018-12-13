@@ -1,0 +1,44 @@
+﻿@model Library.Models.Patron.ListOfPatronModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Profile Link</th>
+            <th> FullName</th>
+            <th>Library Card</th>
+            <th>Fees</th>
+            <th>Home Branch</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Patrons) {
+        <tr>
+            <td>
+                <a asp-controller="Patron" asp-action="detalis" asp-route-id="@item.id">Profile</a>    </td>
+            <td>
+                @item.FullName
+            </td>
+            <td>
+                @item.LibraryCardId
+            </td>
+            <td>
+                @item.Fees
+            </td>
+            <td>
+                @item.LibraryBranch
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

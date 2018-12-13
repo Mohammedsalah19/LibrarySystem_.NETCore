@@ -10,41 +10,87 @@ namespace Library.Controllers
 {
     public class CatalogController : Controller
     {
-        private LibraryData.IService _service;
+        private LibraryData.IService _assetsService;
 
         //constractor
         public CatalogController(LibraryData.IService service)
         {
-            this._service = service;
+            this._assetsService = service;
         }
+
+
 
 
         public IActionResult Index()
         {
+            var assetModels = _assetsService.GetAll();
 
 
-            var assetModels = _service.GetAll();
 
-            var ListingResult = assetModels
-                .Select(result => new AssetindexlistingModel
+            var listingResult = assetModels
+
+                .Select(a => new AssetindexlistingModel
+
                 {
+                    id = a.Id,
 
-                    id = result.Id,
-                    Imgurl = result.ImgUrl,
-                    AuthorOrDirector = _service.GetAuthorOrDirector(result.Id),
-                    DeweyCallNumber = _service.GetDeweyIndex(result.Id),
-                    NumberOfCopies = result.NumOfCopies.ToString(),
-                    Title = result.Title,
-                    Type = _service.GetType(result.Id)
-                });
+                    Imgurl = a.ImgUrl,
 
-            var model = new AssetindexModel()
+                    AuthorOrDirector = _assetsService.GetAuthorOrDirector(a.Id),
+
+                    DeweyCallNumber = _assetsService.GetDeweyIndex(a.Id),
+
+                  //  CopiesAvailable = _checkoutsService.GetNumberOfCopies(a.Id), // Remove
+
+                    Title = _assetsService.GetTitle(a.Id),
+
+                    Type = _assetsService.GetType(a.Id),
+
+                 //   NumberOfCopies = _checkoutsService.GetNumberOfCopies(a.Id)
+
+                }).ToList();
+
+
+
+            var model = new AssetindexModel
+
             {
 
-                Assets = ListingResult
+                Assets = listingResult
+
+            };
+
+          
+
+            return View(model);
+
+        }
+
+
+        public IActionResult Detail(int id)
+        {
+
+
+            var asset = _assetsService.GetByID(id);
+
+            var model = new AssetDetailModel
+            {
+
+                AssetId = id.ToString(),
+                Title = asset.Title,
+                Year = asset.Year.ToString(),
+                Cost = asset.Cost.ToString(),
+                Status = asset.Status.Name,
+                ImageUrl = asset.ImgUrl,
+                AuthorOrDirector = _assetsService.GetAuthorOrDirector(id),
+                CurrentLocation = _assetsService.GetCurrentLocation(id).Name,
+                DeweyCallNumber = _assetsService.GetDeweyIndex(id),
+                ISBN = _assetsService.GetIsbn(id),
             };
 
             return View(model);
+
+
         }
 
 

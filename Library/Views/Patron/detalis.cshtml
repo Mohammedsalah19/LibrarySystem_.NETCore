@@ -1,0 +1,43 @@
+﻿@model Library.Models.Patron.PatronModel
+
+@{
+    ViewData["Title"] = "detalis";
+}
+
+<h2>detalis</h2>
+
+
+<div class="row">
+
+    <div class="col-xs-4" style="background-color:darkgrey">
+        @Html.DisplayNameFor(model => model.id) :@Html.DisplayFor(model => model.id)
+        <br />
+        @Html.DisplayNameFor(model => model.FristName): @Html.DisplayFor(model => model.FristName)
+        <br />
+        @Html.DisplayNameFor(model => model.FullName) : @Html.DisplayFor(model => model.FullName)
+        <br />
+        @Html.DisplayNameFor(model => model.Address):  @Html.DisplayFor(model => model.Address)
+        <br />
+        @Html.DisplayNameFor(model => model.Telephone): @Html.DisplayFor(model => model.Telephone)
+        <br />
+        @Html.DisplayNameFor(model => model.MemberSice):@Html.DisplayFor(model => model.MemberSice)
+
+    </div>
+
+    <div class="col-xs-4" style="background-color:darkseagreen">
+        @Html.DisplayNameFor(model => model.LibraryBranch):@Html.DisplayFor(model => model.LibraryBranch)
+        <br />
+        @Html.DisplayNameFor(model => model.Fees):  @Html.DisplayFor(model => model.Fees) $
+
+    </div>
+    <div class="col-xs-4" style="background-color:burlywood">
+        @Html.DisplayNameFor(model => model.LibraryCardId):@Html.DisplayFor(model => model.LibraryCardId)
+        <br />
+
+
+    </div>
+</div>
+ <div style="text-align:center;margin-top:80px;">
+
+     <a asp-action="Index">Back to List</a>
+</div>
